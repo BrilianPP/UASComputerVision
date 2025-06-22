@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sistem Deteksi Penyakit Daun Mangga</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ url_for('static', filename='lib/animate/animate.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+      <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid position-relative p-0">
+      <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="{{ url_for('index') }}" class="navbar-brand p-0">
+          <h1 class="text-primary"><i class="fas fa-leaf me-3"></i>Mangga</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav ms-auto py-0">
+            <a href="{{ url_for('index') }}" class="nav-item nav-link">Home</a>
+            <a href="{{ url_for('prediksi') }}" class="nav-item nav-link active">Prediction</a>
+          </div>
+          <a href="{{ url_for('prediksi') }}" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">Get Started</a>
+        </div>
+      </nav>
+
+      <!-- Header Start -->
+      <div class="container-fluid bg-breadcrumb">
+        <div class="container text-center py-5" style="max-width: 900px">
+          <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Upload Image for Prediction</h4>
+          <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+            <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+            <li class="breadcrumb-item active text-primary">Upload</li>
+          </ol>
+        </div>
+      </div>
+      <!-- Header End -->
+    </div>
+    <!-- Navbar & Hero End -->
+
+    <!-- Upload Image Start -->
+    <div class="container-fluid py-5">
+      <div class="container py-5">
+        <div class="row g-5">
+          <div class="col-xl-6 wow fadeInUp" data-wow-delay="0.2s">
+            <div class="bg-light p-5 rounded">
+              <h4 class="text-primary mb-4">Upload an Image</h4>
+              <form id="uploadForm" action="/predict" method="POST" enctype="multipart/form-data">
+                <div class="mb-4">
+                  <input
+                    type="file"
+                    class="form-control border-0"
+                    id="imageFile"
+                    name="image"
+                    accept="image/*"
+                    onchange="previewImage(event)"
+                  />
+                  <small class="text-muted">Supported formats: JPG, JPEG, PNG</small>
+                </div>
+                <div class="mb-4 text-center">
+                  <img
+                    id="imagePreview"
+                    src="#"
+                    alt="Preview will be displayed here"
+                    class="img-fluid rounded"
+                    style="display: none; max-height: 300px;"
+                  />
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary w-100 py-3" id="submitBtn">Analyze Image</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+          <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
+            <div class="bg-light p-5 rounded h-100">
+              <h4 class="text-primary mb-4">Prediction Result</h4>
+              {% if result %}
+                  <h3>Hasil Prediksi:</h3>
+                  <p><strong>Penyakit:</strong> {{ result.disease }}</p>
+                  <p><strong>Akurasi:</strong> {{ result.confidence }}%</p>
+                  <p><strong>Penyebab:</strong> {{ result.cause }}</p>
+                  <p><strong>Penanganan:</strong> {{ result.treatment }}</p>
+                  
+                  <h4>Gambar dengan Bounding Box:</h4>
+                  <img src="{{ url_for('static', filename='predicted_image.jpg') }}" alt="Predicted Image" width="300">
+              {% endif %}
+            </div>            
+          </div>          
+          </div>
+        </div>
+      </div>
+    </div>    
+    <!-- Upload Image End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='lib/wow/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/lightbox/js/lightbox.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.js') }}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+      function previewImage(event) {
+      const imageFile = event.target.files[0];
+      const imagePreview = document.getElementById('imagePreview');
+
+      if (imageFile) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          imagePreview.src = e.target.result;
+          imagePreview.style.display = 'block';
+          // Store image data in localStorage
+          localStorage.setItem('previewImageData', e.target.result);
+        };
+        reader.readAsDataURL(imageFile);
+      } else {
+        imagePreview.src = '#';
+        imagePreview.style.display = 'none';
+        localStorage.removeItem('previewImageData');
+      }
+    }
+
+    // Load saved preview on page load
+    window.onload = function() {
+      const imagePreview = document.getElementById('imagePreview');
+      const savedPreview = localStorage.getItem('previewImageData');
+      
+      if (savedPreview) {
+        imagePreview.src = savedPreview;
+        imagePreview.style.display = 'block';
+      }
+    };
+
+    document.getElementById('uploadForm').onsubmit = function(event) {
+      const imageFile = document.getElementById('imageFile').files[0];
+      
+      if (imageFile) {
+        const reader = new FileReader();
+        reader.readAsDataURL(imageFile);
+      }
+    };
+    </script>    
+  </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sistem Deteksi Penyakit Daun Mangga</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ url_for('static', filename='lib/animate/animate.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+      <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Topbar Start -->
+    <div class="container-fluid topbar bg-light px-5 d-none d-lg-block">
+      <div class="row gx-0 align-items-center"></div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid position-relative p-0">
+      <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="{{ url_for('index') }}" class="navbar-brand p-0">
+          <h1 class="text-primary"><i class="fas fa-leaf me-3"></i>Mangga</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav ms-auto py-0">
+            <a href="{{ url_for('index') }}" class="nav-item nav-link active">Home</a>
+            <a href="{{ url_for('prediksi') }}" class="nav-item nav-link">Prediction</a>
+          </div>   
+          <a href="{{ url_for('prediksi') }}" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">Get Started</a>
+        </div>
+      </nav>
+
+      <!-- Carousel Start -->
+      <div class="header-carousel owl-carousel">
+        <div class="header-carousel-item">
+          <img src="{{ url_for('static', filename='img/Daun1.jpg') }}" alt="Daun 1">
+          <div class="carousel-caption">
+            <div class="container">
+              <div class="row gy-0 gx-5">
+                <div class="col-lg-0 col-xl-5"></div>
+                <div class="col-xl-7 animated fadeInLeft">
+                  <div class="text-sm-center text-md-end">
+                    <h4 class="text-primary text-uppercase fw-bold mb-4">Mangga</h4>
+                    <h1 class="display-4 text-uppercase text-white mb-4">Sistem Prediksi Penyakit Daun Mangga</h1>
+                    <p class="mb-5 fs-5">Sistem ini dirancang untuk membantu petani mendeteksi penyakit pada daun mangga dengan cepat dan akurat menggunakan teknologi berbasis gambar.</p>
+                    <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
+                      <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="{{ url_for('prediksi') }}">Start</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Second carousel item -->
+        <div class="header-carousel-item">
+          <img src="{{ url_for('static', filename='img/Daun2.jpg') }}" alt="Daun 2">
+          <div class="carousel-caption">
+            <div class="container">
+              <div class="row g-5">
+                <div class="col-12 animated fadeInUp">
+                  <div class="text-center">
+                    <h4 class="text-primary text-uppercase fw-bold mb-4">Selamat Datang</h4>
+                    <h1 class="display-4 text-uppercase text-white mb-4">Deteksi Penyakit Daun Mangga Lebih Mudah</h1>
+                    <p class="mb-5 fs-5">Dengan sistem ini, identifikasi penyakit daun mangga dapat dilakukan secara cepat, akurat, dan membantu meningkatkan produktivitas pertanian.</p>
+                    <div class="d-flex justify-content-center flex-shrink-0 mb-4">
+                      <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="{{ url_for('prediksi') }}">Mulai</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Carousel End -->
+    </div>
+    <!-- Navbar & Hero End -->
+
+    <!-- About Start -->
+    <div class="container-fluid about py-5">
+      <div class="container py-5">
+        <div class="row g-5 align-items-center">
+          <div class="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
+            <div>
+              <h4 class="text-primary">Tentang Kami</h4>
+              <h1 class="display-5 mb-4">Solusi Cerdas untuk Deteksi Penyakit Daun Mangga</h1>
+              <p class="mb-4">Kami menyediakan sistem inovatif berbasis teknologi untuk membantu petani dan peneliti dalam mendeteksi penyakit daun mangga secara cepat, akurat, dan efisien menggunakan analisis citra daun.</p>
+              <div class="row g-4">
+                <div class="col-md-6 col-lg-6 col-xl-6"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
+            <div class="bg-primary rounded position-relative overflow-hidden">
+              <img src="{{ url_for('static', filename='img/OIP.jpg') }}" class="img-fluid rounded w-100" alt="" />
+              <div class="rounded-bottom">
+                <img src="{{ url_for('static', filename='img/daunmangga.jpg') }}" class="img-fluid rounded-bottom w-100" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='lib/wow/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/lightbox/js/lightbox.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.js') }}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>
