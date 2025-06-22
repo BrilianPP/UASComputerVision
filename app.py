@@ -104,16 +104,42 @@ def predict():
         img_cv = np.array(img_pil)[:, :, ::-1].copy()  # Convert to BGR
         h, w, _ = img_cv.shape
 
-        # Bounding box berwarna kuning (BGR: 0, 255, 255)
-        color_box = (0, 255, 255)  # Yellow
-        cv2.rectangle(img_cv, (10, 10), (w - 10, h - 10), color_box, 2)
+        # Hitung margin bounding box proporsional
+        margin_w = int(w * 0.05)
+        margin_h = int(h * 0.05)
+        top_left = (margin_w, margin_h)
+        bottom_right = (w - margin_w, h - margin_h)
 
-        # Teks label dengan warna hitam
+        # Buat overlay gelap di seluruh gambar
+        overlay = img_cv.copy()
+        dark_overlay = np.zeros_like(img_cv, dtype=np.uint8)
+        dark_overlay[:] = (0, 0, 0)  # Hitam
+
+        # Copy area dalam bounding box dari gambar asli
+        bright_area = img_cv[margin_h:h - margin_h, margin_w:w - margin_w].copy()
+        dark_overlay[margin_h:h - margin_h, margin_w:w - margin_w] = bright_area
+
+        # Gabungkan overlay dengan alpha blending
+        alpha = 0.5
+        img_cv = cv2.addWeighted(img_cv, alpha, dark_overlay, 1 - alpha, 0)
+
+        # Gambar garis bounding box kuning
+        cv2.rectangle(img_cv, top_left, bottom_right, (0, 255, 255), 2)
+
+        # Teks label di atas bounding box
         label_text = f"{disease_data['name']} ({confidence * 100:.1f}%)"
-        font_scale = 0.5  # Diperkecil
-        font_thickness = 1
-        text_color = (0, 0, 0)  # Black
-        cv2.putText(img_cv, label_text, (20, 35), cv2.FONT_HERSHEY_SIMPLEX, font_scale, text_color, font_thickness)
+        font_scale = h / 700.0
+        font_thickness = max(2, int(h / 250))
+        text_color = (255, 255, 255)  # Putih
+
+        # Ukuran dan posisi teks
+        (text_w, text_h), _ = cv2.getTextSize(label_text, cv2.FONT_HERSHEY_SIMPLEX, font_scale, font_thickness)
+        text_x = top_left[0] + 5
+        text_y = top_left[1] - 10 if top_left[1] - 10 > text_h else top_left[1] + text_h + 10
+
+        # Background gelap semi-transparan untuk teks
+        cv2.rectangle(img_cv, (text_x - 5, text_y - text_h - 5), (text_x + text_w + 5, text_y + 5), (0, 0, 0), -1)
+        cv2.putText(img_cv, label_text, (text_x, text_y), cv2.FONT_HERSHEY_SIMPLEX, font_scale, text_color, font_thickness)
 
         # Simpan hasil gambar ke folder static
         result_image_path = os.path.join('static', 'predicted_image.jpg')
@@ -133,6 +159,5 @@ def predict():
     except Exception as e:
         return render_template('prediksi.html', error=str(e))
     
-
 if __name__ == '__main__':
     app.run(debug=True)
