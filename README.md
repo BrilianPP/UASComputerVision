@@ -100,7 +100,7 @@ Ilmu **Computer Vision** diterapkan secara menyeluruh dalam proyek ini, mulai da
   <p align="center">
   <img src="Gambar/VisualisasiValAcc.png" width="250"/>
   <img src="Gambar/VisualisasiValLoss.png" width="250"/>
-</p>
+  </p>
 - ### Confusion Matrix
   <p align="center">
   <img src="Gambar/ConfMat.png" width="500"/>
@@ -109,4 +109,4 @@ Ilmu **Computer Vision** diterapkan secara menyeluruh dalam proyek ini, mulai da
   <p align="center">
   <img src="Gambar/Home.png" width="250"/>
   <img src="Gambar/Hasil.png" width="250"/>
-</p>
+  </p>
