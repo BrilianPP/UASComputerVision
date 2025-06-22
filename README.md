@@ -66,7 +66,7 @@ Ilmu **Computer Vision** diterapkan secara menyeluruh dalam proyek ini, mulai da
 - **Bahasa Pemrograman:** Python  
 - **Framework:** TensorFlow / Keras  
 - **Metode:** CNN  
-- **Visualisasi:** OpenCV, Matplotlib  
+- **Visualisasi:** CV, Matplotlib  
 - **Web Framework:** Flask  
 - **Teknik:** Image preprocessing, feature extraction, classification, bounding box detection  
 - **Hosting:** Localhost / PythonAnywhere / Heroku (opsional)
@@ -79,7 +79,7 @@ Ilmu **Computer Vision** diterapkan secara menyeluruh dalam proyek ini, mulai da
    - Jenis penyakit ditampilkan secara otomatis.
    - Menampilkan tingkat kepercayaan akurasi (*confidence score*).
 3. **Visualisasi Bounding Box:**
-   - Area bercak atau penyakit pada daun ditandai dengan **bounding box berwarna kuning**.
+   - Area daun ditandai dengan **bounding box berwarna kuning**.
    - Label jenis penyakit dan confidence ditampilkan di dalam gambar.
 4. **Rekomendasi Penanganan:**
    - Misalnya: "Penyakit Jamur Antraknosa – Gunakan fungisida berbahan aktif tembaga."
@@ -98,10 +98,10 @@ Ilmu **Computer Vision** diterapkan secara menyeluruh dalam proyek ini, mulai da
 
   ---
 
-## 📈 Progress Saat Ini
+## 📈 Detail Progress 
 - ✅ Data preprocessing dan augmentasi gambar selesai.
 - ✅ Model CNN dilatih dengan akurasi validasi hingga **92%**.
-- ✅ Implementasi bounding box menggunakan OpenCV selesai.
+- ✅ Implementasi bounding box CV selesai.
 - ✅ Sistem web berbasis Flask telah aktif dan menerima input gambar.
 - ✅ Sistem memberikan output klasifikasi, confidence, penanganan, dan gambar hasil.
-- ✅ Progres Proyek: **100% (Selesai dan Siap Dipresentasikan)**
+- ✅ Progres Proyek: **100% (Selesai)**
