@@ -69,7 +69,6 @@ Ilmu **Computer Vision** diterapkan secara menyeluruh dalam proyek ini, mulai da
 - **Visualisasi:** CV, Matplotlib  
 - **Web Framework:** Flask  
 - **Teknik:** Image preprocessing, feature extraction, classification, bounding box detection  
-- **Hosting:** Localhost / PythonAnywhere / Heroku (opsional)
 
 ---
 
@@ -88,16 +87,6 @@ Ilmu **Computer Vision** diterapkan secara menyeluruh dalam proyek ini, mulai da
 
 ---
 
-## 📷 Contoh Output Sistem
-
-- **Input:** Gambar daun mangga terinfeksi  
-- **Output Visual:**  
-  ![Contoh Gambar Bounding Box](https://via.placeholder.com/400x250.png?text=Contoh+Bounding+Box+Penyakit)
-
-- **Output Teks:**
-
-  ---
-
 ## 📈 Detail Progress 
 - ✅ Data preprocessing dan augmentasi gambar selesai.
 - ✅ Model CNN dilatih dengan akurasi validasi hingga **92%**.
@@ -105,3 +94,19 @@ Ilmu **Computer Vision** diterapkan secara menyeluruh dalam proyek ini, mulai da
 - ✅ Sistem web berbasis Flask telah aktif dan menerima input gambar.
 - ✅ Sistem memberikan output klasifikasi, confidence, penanganan, dan gambar hasil.
 - ✅ Progres Proyek: **100% (Selesai)**
+
+## 🚀 Hasil 
+- ### Grafik akurasi dan loss model
+  <p align="center">
+  <img src="Gambar/VisualisasiValAcc.png" width="250"/>
+  <img src="Gambar/VisualisasiValLoss.png" width="250"/>
+</p>
+- ### Confusion Matrix
+  <p align="center">
+  <img src="Gambar/ConfMat.png" width="500"/>
+  </p>
+- ### Aplikasi
+  <p align="center">
+  <img src="Gambar/Home.png" width="250"/>
+  <img src="Gambar/Hasil.png" width="250"/>
+</p>
