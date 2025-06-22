@@ -88,6 +88,7 @@ Ilmu **Computer Vision** diterapkan secara menyeluruh dalam proyek ini, mulai da
 
 ---
 
+![Contoh Gambar](https://drive.google.com/uc?export=view&id=1HCyw8NcYF2Snmz5JROySy1oeimvtBQuy)
 ## 📷 Contoh Output Sistem
 
 - **Input:** Gambar daun mangga terinfeksi  
