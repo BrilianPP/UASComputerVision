@@ -50,7 +50,24 @@ This project uses **Convolutional Neural Networks (CNNs)** to classify mango lea
 ---
 
 ## 📁 Dataset
-- **Source:** [Kaggle - Mango Leaf Disease Dataset](https://www.kaggle.com/datasets/aryashah2k/mango-leaf-disease-dataset)
+
+The dataset used in this project is the **Mango Leaf Disease Dataset** sourced from [Kaggle](https://www.kaggle.com/datasets/aryashah2k/mango-leaf-disease-dataset). It contains **8 distinct classes of mango leaf images** stored in separate folders, with a total of **4,000 images**.
+
+Here is the breakdown of images per class:
+
+| No | Disease / Label         | Number of Images |
+|----|--------------------------|------------------|
+| 1  | Healthy                  | 500              |
+| 2  | Powdery Mildew           | 500              |
+| 3  | Anthracnose              | 500              |
+| 4  | Bacterial Canker         | 500              |
+| 5  | Cutting Weevil           | 500              |
+| 6  | Die Back                 | 500              |
+| 7  | Gall Midge               | 500              |
+| 8  | Sooty Mould              | 500              |
+|    | **Total**                | **4,000**        |
+
+The data was split into training and testing sets with an 80:20 ratio. Each label was encoded and one-hot transformed for use in multi-class classification. Data augmentation was performed to increase dataset variability and improve model generalization.
 
 ---
 
@@ -66,31 +83,33 @@ This project uses **Convolutional Neural Networks (CNNs)** to classify mango lea
 
 ## 🧠 Model Overview
 
-The project utilizes a **Convolutional Neural Network (CNN)** trained from scratch to perform image classification on mango leaf diseases. The dataset consists of eight distinct classes:
-1. Healthy  
-2. Powdery Mildew  
-3. Anthracnose  
-4. Bacterial Canker  
-5. Cutting Weevil  
-6. Die Back  
-7. Gall Midge  
-8. Sooty Mould  
+The model built in this project is a **custom CNN architecture** designed from scratch without any pre-trained models. It consists of **three convolutional layers** with ReLU activation followed by **max pooling layers**, a **fully connected (dense) layer**, and an **output layer** with softmax activation for multi-class classification.
 
-The data was split into training and testing sets (80:20 ratio). To improve generalization, various data augmentation techniques were applied such as rotation, shifting, shearing, zooming, and flipping.
+### 🧩 Model Layers:
+- **Input Layer:** 256x256 RGB image  
+- **Conv Layer 1:** 32 filters, 3x3 kernel, ReLU, MaxPooling  
+- **Conv Layer 2:** 64 filters, 3x3 kernel, ReLU, MaxPooling  
+- **Conv Layer 3:** 128 filters, 3x3 kernel, ReLU, MaxPooling  
+- **Flatten Layer**  
+- **Dense Layer:** 128 neurons, ReLU  
+- **Dropout:** 0.5 (to prevent overfitting)  
+- **Output Layer:** 8 neurons (for 8 classes), softmax  
 
-The CNN model includes multiple convolutional and pooling layers to extract features from images, followed by fully connected dense layers with dropout regularization to reduce overfitting. The final output layer uses softmax activation to classify the input image into one of the eight disease categories.
-
-The model training employed:
+### ⚙️ Training Configuration:
 - **Optimizer:** Adam  
 - **Loss Function:** Categorical Crossentropy  
-- **Callbacks:** Early Stopping and Learning Rate Reduction on Plateau
+- **Epochs:** 10  
+- **Batch Size:** 32  
+- **Callbacks Used:**
+  - EarlyStopping: Monitors validation loss to avoid overfitting  
+  - ReduceLROnPlateau: Adjusts learning rate if model stagnates  
 
   ![image](https://github.com/user-attachments/assets/cf8bf011-c464-4ee4-9084-4e4e4e26f9b1)
 
-![image](https://github.com/user-attachments/assets/ac5e9aa4-1322-4641-b742-5dd23a935f81)
+  ![image](https://github.com/user-attachments/assets/ac5e9aa4-1322-4641-b742-5dd23a935f81)
 
 
-After training, the model achieved a **validation accuracy of 92%**, demonstrating good performance on unseen data.
+The model achieved a **validation accuracy of 92%** after training, demonstrating its effectiveness in classifying mango leaf diseases.
 
 ### Model Accuracy & Loss Graphs  
 <p align="center">  
