@@ -151,7 +151,7 @@ Similar handling descriptions are stored and displayed dynamically depending on 
 
 ---
 
-## 📈 Project Progress
+## 📈 Project Detail
 - ✅ Data preprocessing and augmentation  
 - ✅ CNN model training (92% validation accuracy)  
 - ✅ Bounding box implementation  
