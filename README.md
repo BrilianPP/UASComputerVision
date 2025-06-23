@@ -64,6 +64,59 @@ This project uses **Convolutional Neural Networks (CNNs)** to classify mango lea
 
 ---
 
+## 🧠 Model Overview
+
+The project utilizes a **Convolutional Neural Network (CNN)** trained from scratch to perform image classification on mango leaf diseases. The dataset consists of eight distinct classes:
+1. Healthy  
+2. Powdery Mildew  
+3. Anthracnose  
+4. Bacterial Canker  
+5. Cutting Weevil  
+6. Die Back  
+7. Gall Midge  
+8. Sooty Mould  
+
+The data was split into training and testing sets (80:20 ratio). To improve generalization, various data augmentation techniques were applied such as rotation, shifting, shearing, zooming, and flipping.
+
+The CNN model includes multiple convolutional and pooling layers to extract features from images, followed by fully connected dense layers with dropout regularization to reduce overfitting. The final output layer uses softmax activation to classify the input image into one of the eight disease categories.
+
+The model training employed:
+- **Optimizer:** Adam  
+- **Loss Function:** Categorical Crossentropy  
+- **Callbacks:** Early Stopping and Learning Rate Reduction on Plateau
+
+  ![image](https://github.com/user-attachments/assets/cf8bf011-c464-4ee4-9084-4e4e4e26f9b1)
+
+![image](https://github.com/user-attachments/assets/ac5e9aa4-1322-4641-b742-5dd23a935f81)
+
+
+After training, the model achieved a **validation accuracy of 92%**, demonstrating good performance on unseen data.
+
+### Model Accuracy & Loss Graphs  
+<p align="center">  
+  <img src="Gambar/VisualisasiValAcc.png" width="450"/>  
+  <img src="Gambar/VisualisasiValLoss.png" width="450"/>  
+</p>  
+
+### Confusion Matrix  
+<p align="center">  
+  <img src="Gambar/ConfMat.png" width="700"/>  
+</p>  
+
+---
+
+## 💡 Disease Knowledge Integration
+
+The system is enhanced by integrating disease treatment information for each identified disease. For example:
+
+- **Anthracnose (Colletotrichum gloeosporioides):**  
+  Recommended treatment includes the use of *Trichoderma* mixed with organic fertilizers and application of fungicides such as mancozeb, azoxystrobin, or carbendazim every 3–5 days during the flowering and fruit development stages.  
+  *(Source: Ministry of Agriculture, 2016; Siregar & Nurmuharai, 2017)*
+
+Similar handling descriptions are stored and displayed dynamically depending on the prediction results.
+
+---
+
 ## 🚀 System Features
 1. **Image Upload:** Upload leaf images via web UI  
 2. **Disease Prediction:**  
@@ -90,17 +143,6 @@ This project uses **Convolutional Neural Networks (CNNs)** to classify mango lea
 ---
 
 ## 📊 Results
-
-### Model Accuracy & Loss Graphs  
-<p align="center">  
-  <img src="Gambar/VisualisasiValAcc.png" width="450"/>  
-  <img src="Gambar/VisualisasiValLoss.png" width="450"/>  
-</p>  
-
-### Confusion Matrix  
-<p align="center">  
-  <img src="Gambar/ConfMat.png" width="700"/>  
-</p>  
 
 ### Web Application Interface  
 <p align="center">  
