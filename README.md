@@ -34,7 +34,7 @@ Ilmu **Computer Vision** diterapkan secara menyeluruh dalam proyek ini, mulai da
 
 ## 🎯 Tujuan
 - Mendeteksi dan mengklasifikasikan jenis penyakit daun mangga menggunakan CNN.
-- Memberikan tingkat kepercayaan (confidence) terhadap hasil klasifikasi.
+- Memberikan Akurasi (confidence) terhadap hasil klasifikasi.
 - Menyediakan informasi penanganan berdasarkan klasifikasi penyakit.
 - Menampilkan visual bounding box untuk mempermudah pengguna mengenali bagian daun yang terdampak.
 - Mengimplementasikan sistem dalam aplikasi web yang mudah digunakan.
