@@ -1,4 +1,4 @@
-# 🍃 Mango Leaf Disease Detection (100% Completed)
+# 🍃 Mango Leaf Disease Detection 
 
 ## 👨‍🎓 Student Information
 - **Name:** Brilian Purnama Putra  
