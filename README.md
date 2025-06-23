@@ -98,15 +98,15 @@ Ilmu **Computer Vision** diterapkan secara menyeluruh dalam proyek ini, mulai da
 ## 🚀 Hasil 
 - ### Grafik akurasi dan loss model
   <p align="center">
-  <img src="Gambar/VisualisasiValAcc.png" width="350"/>
-  <img src="Gambar/VisualisasiValLoss.png" width="350"/>
+  <img src="Gambar/VisualisasiValAcc.png" width="500"/>
+  <img src="Gambar/VisualisasiValLoss.png" width="500"/>
   </p>
 - ### Confusion Matrix
   <p align="center">
-  <img src="Gambar/ConfMat.png" width="500"/>
+  <img src="Gambar/ConfMat.png" width="700"/>
   </p>
 - ### Aplikasi
   <p align="center">
-  <img src="Gambar/Home.png" width="350"/>
-  <img src="Gambar/Hasil.png" width="350"/>
+  <img src="Gambar/Home.png" width="500"/>
+  <img src="Gambar/Hasil.png" width="500"/>
   </p>
